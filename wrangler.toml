@@ -3,6 +3,3 @@ type = "webpack"
 account_id = "dc56444c4c955a1653106ccf997c1067"
 workers_dev = true
 webpack_config = "webpack.config.js"
-kv-namespaces = [
-  { binding = "KV_CACHE", id = "f2c6a56f2f9844ef89dd6af01d019ce2" }
-]

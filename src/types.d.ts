@@ -5,7 +5,6 @@ declare global {
 
   interface Config {
     baseUrl: string
-    cacheKey: (request: Request) => string
-    expiration: number
+    cacheTtl?: number
   }
 }
