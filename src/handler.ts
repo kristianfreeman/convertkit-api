@@ -35,7 +35,8 @@ export async function handleRequest(
   try {
     const { request } = event
     const incomingUrl = new URL(request.url)
-    const shouldCache = !!incomingUrl.searchParams.get('api_key')
+    const shouldCache =
+      !!incomingUrl.searchParams.get('api_key') && request.method == 'GET'
     const cacheKey = config.cacheKey(request)
     const cachedData = await KV_CACHE.get(cacheKey)
     if (shouldCache && cachedData) {
