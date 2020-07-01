@@ -1,5 +1,6 @@
 import { expect } from 'chai'
 import { handleRequest } from '../src/handler'
+import config from '../src/config'
 
 describe('handler returns response with request method', () => {
   const methods = [
@@ -15,7 +16,10 @@ describe('handler returns response with request method', () => {
   ]
   methods.forEach(method => {
     it(method, async () => {
-      const result = await handleRequest(new Request('/', { method }))
+      const evt = new FetchEvent('fetch', {
+        request: new Request('/', { method }),
+      })
+      const result = await handleRequest(evt, config)
       const text = await result.text()
       expect(text).to.include(method)
     })
